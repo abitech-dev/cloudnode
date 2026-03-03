@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useServers } from '../hooks/useServers';
-import { Server, Hash, Globe, Check, X } from 'lucide-react';
+import { Hash, Globe, Check, X } from 'lucide-react';
 import '../styles/components.css';
 
 const ServerForm = ({ initialData, isEditMode = false, onCancel, onSaveSuccess, onUpdateServer }) => {

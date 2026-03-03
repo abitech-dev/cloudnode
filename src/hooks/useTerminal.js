@@ -63,7 +63,7 @@ export const useTerminal = (serverId, userId = null) => {
         };
 
         return ws;
-    }, [serverId]);
+    }, [serverId, userId]);
 
     // Desconectar el WebSocket
     const disconnectWebSocket = useCallback(() => {
