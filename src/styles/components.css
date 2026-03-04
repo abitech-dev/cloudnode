@@ -779,6 +779,57 @@
     }
 }
 
+/* ==== radio card ==== */
+.radio-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+    justify-content: center;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.radio-card.active {
+    background-color: rgba(37, 99, 235, 0.05);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.radio-card:hover:not(.active) {
+    background-color: var(--bg-secondary);
+}
+
+.form__input-wrapper {
+    position: relative;
+}
+
+.form__input-wrapper--textarea {
+    position: relative;
+}
+
+.form__input-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.form__input {
+    padding-left: 2.5rem !important;
+}
+
+.form__textarea {
+    padding-top: 0.75rem !important;
+}
+
 .add-server-form {
     max-width: 800px;
     margin: 2rem auto;

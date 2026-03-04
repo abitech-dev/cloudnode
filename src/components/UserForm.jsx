@@ -7,7 +7,7 @@ const UserForm = ({ initialData, serverId, onSuccess, onCancel }) => {
     const { addServerUser, updateServerUser, deleteServerUser } = useServers();
     const [userData, setUserData] = useState({
         username: '',
-        auth_type: 'password', // 'password' or 'key'
+        auth_type: 'password', // 'password' o 'key'
         password: '',
         private_key: ''
     });
@@ -24,8 +24,6 @@ const UserForm = ({ initialData, serverId, onSuccess, onCancel }) => {
             setUserData({
                 username: initialData.username || '',
                 auth_type: initialData.auth_type || 'password',
-                // Don't populate sensitive fields like password/private_key if not needed or unavailable
-                // But for edit, maybe we want to allow updating them.
                 password: '', 
                 private_key: ''
             });
@@ -43,7 +41,6 @@ const UserForm = ({ initialData, serverId, onSuccess, onCancel }) => {
         setValidationError(null);
         setIsSaving(true);
 
-        // Basic validation
         if (!userData.username.trim()) {
             setValidationError('El nombre de usuario es obligatorio');
             return;
@@ -58,7 +55,6 @@ const UserForm = ({ initialData, serverId, onSuccess, onCancel }) => {
         }
 
         try {
-            // Prepare data to send, mapping frontend fields to backend expected fields
             const dataToSend = {
                 username: userData.username,
                 auth_type: userData.auth_type,
@@ -254,48 +250,6 @@ const UserForm = ({ initialData, serverId, onSuccess, onCancel }) => {
                 onCancel={handleCloseDelete}
                 isLoading={isDeleting}
             />
-            
-            <style>{`
-                .radio-card {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    padding: 0.75rem 1rem;
-                    border: 1px solid var(--border-color);
-                    border-radius: var(--radius-md);
-                    cursor: pointer;
-                    transition: all 0.2s;
-                    flex: 1;
-                    justify-content: center;
-                    font-weight: 500;
-                    color: var(--text-secondary);
-                }
-                .radio-card.active {
-                    background-color: rgba(37, 99, 235, 0.05); /* var(--primary-color) with opacity */
-                    border-color: var(--primary-color);
-                    color: var(--primary-color);
-                }
-                .radio-card:hover:not(.active) {
-                    background-color: var(--bg-secondary);
-                }
-                .form__input-wrapper {
-                    position: relative;
-                }
-                .form__input-icon {
-                    position: absolute;
-                    left: 0.75rem;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    color: var(--text-secondary);
-                    pointer-events: none;
-                }
-                .form__input {
-                    padding-left: 2.5rem !important;
-                }
-                .form__textarea {
-                    padding-top: 0.75rem !important;
-                }
-            `}</style>
         </div>
     );
 };
